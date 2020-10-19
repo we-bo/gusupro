@@ -2,13 +2,17 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import MintUI from 'mint-ui'
 import axios from 'axios'
 import qs from 'qs'
 import moment from 'moment'
+//导入MintUi
+import MintUI from 'mint-ui'
+//导入样式文件
 import 'mint-ui/lib/style.min.css';
-
+//注册Vue插件
 Vue.use(MintUI)
+Vue.prototype.qs=qs;
+
 
 Vue.prototype.moment = moment;
 axios.defaults.baseURL = 'http://127.0.0.1:3000'

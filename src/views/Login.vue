@@ -1,0 +1,142 @@
+<template>
+<div>
+    <div class="image">
+        <span ><img src="../assets/login_register/xhao.png"></span>
+        <span class="register">注册预定返积分</span>
+    </div>
+    <h1 class="h1">登录古宿</h1>
+    <mt-field type="text"
+     label="用户名"
+     placeholder="手机号/邮箱/用户名"
+     :attr="{maxlength:15}"
+     v-model="username"
+     :state="usernameState"
+     @blur.native.capture="checkUsername"
+    ></mt-field>
+    <hr class="password">
+    <mt-field type="text"
+     label="密码"
+     placeholder="请输入密码"
+     :attr="{maxlength:15}"
+     v-model="password"
+     :state="passwordState"
+     @blur.native.capture="checkPassword"
+    ></mt-field>
+    <hr class="password">
+    <mt-button type="default" class="button" @click="handle">登录</mt-button>
+    <div class="code">
+        <span>手机验证码登录</span>
+        <span class="coded">忘记密码?</span>
+    </div>
+    <p class="icon">第三方登录</p>
+    <div class="base">
+        <img src="../assets/login_register/weixin.png">
+        <img src="../assets/login_register/qq-copy.png">
+        <img src="../assets/login_register/weibo1.png">
+    </div>
+    </div>
+</template>
+<style>
+.image{
+    margin-left:14px;
+    margin-top:9px;
+}
+.register{
+    margin-left:212px;
+    margin-top:-15px;
+}
+ .h1{
+    font-size:30px;
+    margin-top: 25px;
+    margin-left: -210px;
+} 
+.password{
+ width:350px;
+}
+.button{
+    width:300px;
+    height: 45px;
+    background-color: rgba(0, 0, 0, 0.2) !important;
+    margin-top:50px;
+    line-height: 45px;
+}
+.code{
+    margin-left:-115px;
+    margin-top:20px;
+}
+.coded{
+   float: right;
+   margin-right: 22px;
+}
+.icon{
+    font-size:10px;
+    margin-top:150px;
+}
+.base{
+    width:180px;
+    margin-left:100px;
+    display: flex;
+    justify-content:space-between;
+    margin-top:13px;
+}
+</style>
+<script>
+
+export default {
+    data(){
+        return{
+            username:'',
+            password:'',
+            usernameState:'',
+            passwordState:''
+        }
+    },
+    methods:{
+        checkUsername(){
+            let usernameRegExp=/^[0-9a-zA-Z_]{6,20}$/;
+            if(usernameRegExp.test(this.username)){
+                this.usernameState='success';
+                return true;
+            }else{
+                this.usernameState="error"
+                this.$toast({
+                    message:"请填写用户名",
+                    position:"top",
+                    duration:"2000"
+                });
+                return false;
+            }
+        },
+        checkPassword(){
+            let passwordRegExp=/^[0-9a-zA-Z_]{6,20}$/;
+            if(passwordRegExp.test(this.password)){
+                this.passwordState='success';
+                return true
+            }else{
+                this.passwordState='error';
+                this.$toast({
+                    message:"密码必须为字母、数字的组合体",
+                    position:"top",
+                    duration:"2000"
+                });
+                return false
+            }
+        },
+        handle(){
+            if(this.checkUsername() && this.checkPassword()){
+                let obj={
+                    username:this.username,
+                    password:this.password
+                }
+                this.axios.post('/login',this.qs.stringify(obj)).then(res=>{
+                    if(res.data.code==1){
+                      this.$router.push('/');  
+                    }else{
+                        this.$messagebox("登录提示","用户名活密码错误")
+                    }
+                })
+            }
+        }
+    }
+}
+</script>
