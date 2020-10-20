@@ -33,7 +33,7 @@
 </template>
 <style>
 .header{
-      background:#fafafa !important;
+    background:#fafafa !important;
 
 }
 .auuount{
@@ -47,7 +47,7 @@
 }
 .all{
     text-align: left !important;
-       background-color: white !important;
+    background-color: white !important;
 }
 .all span{
     float:right !important;
@@ -56,7 +56,7 @@
     padding-top:10px;
 }
 .bottom{
-      padding-top:25px;
+    padding-top:25px;
     text-align: center;
 }
 .botto{

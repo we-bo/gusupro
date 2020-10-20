@@ -37,6 +37,18 @@ const routes = [
   {
     path: '/collect',
     component: () => import(/* webpackChunkName: "collect" */ '../views/Collect.vue')
+  },
+  {
+    path: '/slout',
+    component: () => import(/* webpackChunkName: "slout" */ '../views/Slout.vue')
+  },
+  {
+    path: '/me',
+    component: () => import(/* webpackChunkName: "me" */ '../views/Me.vue')
+  },
+  {
+    path: '/location',
+    component: () => import(/* webpackChunkName: "location" */ '../views/Location.vue')
   }
 ]
 
