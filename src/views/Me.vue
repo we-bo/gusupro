@@ -91,6 +91,7 @@
         <div id="holder" class="d-flex">
             我想当房东赚钱
         </div> 
+        <bottom>></bottom>
     </div>
 </template>
 <style>
@@ -168,3 +169,14 @@ a{
     border-radius:8px
 }
 </style>
+<script>
+import Bottom from '../components/Footer'
+export default {
+    data(){
+        return{
+
+        }
+    },
+    components:{Bottom}
+}
+</script>

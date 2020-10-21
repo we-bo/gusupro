@@ -21,10 +21,12 @@
   <div class="btn">
     <button>随便逛逛</button>
   </div>
+  <bottom></bottom>
 </div>
 </template>
 
 <script>
+import Bottom from '../components/Footer'
 export default {
   data() {
     return {
@@ -46,7 +48,9 @@ export default {
     clock(index) {
       this.cros = index;
     }
-  }
+  },
+  components:{Bottom},
+  
 };
 </script>
 

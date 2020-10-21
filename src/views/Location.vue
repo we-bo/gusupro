@@ -1,6 +1,6 @@
 <template>
   <div id="one">
-    <img src="../assets/icon12.png" alt="">
+    <img src="../assets/icon12.png" alt="" @click="isShow">
       <h4>选择城市</h4>
        <ul class="list-unstyled d-flex flex-wrap ">
         <li>
@@ -123,6 +123,15 @@
 
 <script> 
   export default {
-   
+   data(){
+     return{
+     isShow:true,
+     }
+   },
+   methods:{
+     isShow(){
+       this.isShow=false;
+     }
+   }
 }
 </script>
