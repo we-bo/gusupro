@@ -17,7 +17,7 @@
             <img src="../assets/gs_icon7.png" alt="">
             <span>暂无聊天信息</span>
         </div>
-        <bottom></bottom>
+        <my-footer></my-footer>
     </div>  
 </template>
 <style scoped>
@@ -81,7 +81,6 @@
 }
 </style>
 <script>
-import Bottom from '../components/Footer'
 export default {
     data(){
         return{
@@ -100,6 +99,5 @@ export default {
     mounted(){
 
     },
-    components:{Bottom}
 }
 </script>

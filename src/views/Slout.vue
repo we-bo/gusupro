@@ -38,7 +38,6 @@ export default {
         },
         //校验验证码  
         validate(){  
-                // var inputCode = document.getElementById("input").value.toUpperCase(); //取得输入的验证码并转化为大写 
                 let inputCode= this.inputCode.toUpperCase();   
                 if(inputCode.length <= 0) { //若输入的验证码长度为0  
                 alert("请输入验证码！"); //则弹出请输入验证码  

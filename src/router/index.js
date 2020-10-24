@@ -15,8 +15,8 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
-    path: '/account',
-    component: () => import(/* webpackChunkName: "account" */ '../views/Account.vue')
+    path: '/data',
+    component: () => import(/* webpackChunkName: "data" */ '../views/Data.vue')
   },
   {
     path: '/register',
@@ -49,6 +49,10 @@ const routes = [
   {
     path: '/location',
     component: () => import(/* webpackChunkName: "location" */ '../views/Location.vue')
+  },
+  {
+    path: '/article/:id',
+    component: () => import(/* webpackChunkName: "article" */ '../views/Article.vue')
   }
 ]
 

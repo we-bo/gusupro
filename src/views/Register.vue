@@ -1,20 +1,21 @@
 <template>
     <div>
-        <mt-header title="" class="head">
+        <!-- <mt-header title="" class="head">
       <router-link to="/" slot="left">
 	      <mt-button icon="back"></mt-button>
       </router-link>
       <router-link to="/register" slot="right" class="shortcut">
         登录
       </router-link>
-    </mt-header>
+    </mt-header> -->
     <div class="header">
+      <img @click="header_img" src="../assets/zjt.png" alt=""><span @click="header_span">登录</span>
       <div></div><p>注册古宿</p>
     </div>
     <div class="in">
       <p>成为古宿会员以使用更多服务,注册既表示您已同意</p>
-      <a href="#">《古宿网服务协议》</a>
-      <a href="#">《隐私政策》</a>
+      <input type="checkbox" />《古宿网服务协议》
+      <input type="checkbox"/>《隐私政策》
     </div>
     <div class="uname">
       <mt-field 
@@ -67,6 +68,14 @@
     }
     .head{
       background-color: #ffffff !important;
+    }
+    .header>img{
+      float: left;
+    }
+    .header>span{
+      float: right;
+      margin-right: 15px;
+      margin-top: 7px;
     }
     .header div{
       width: 6px;
@@ -139,6 +148,12 @@ export default {
     }
   },
   methods:{
+    header_span(){
+      this.$router.push('login');
+    },
+    header_img(){
+      this.$router.push('/');
+    },
     //校验用户名
     checkUsername(){  
       let usernameRegExp = /^[0-9a-zA-Z_]{6,20}$/;

@@ -1,9 +1,16 @@
 <template>
        <div class="container">
         <div class="first ml-2 mr-2 pt-3">
-            <div class="h6 float-left mb-0">是Lisa啊</div>
+            <div class="h6 float-left mb-0" v-if="this.$store.state.isLogined==0">
+                <router-link to="register">注册</router-link>&nbsp;/
+                <router-link to="login">登录</router-link>
+            </div>
+            <div class="h6 float-left mb-0" v-else>
+                <router-link to="/">注销</router-link>
+                {{this.$store.state.username}}
+            </div>
             <span class="float-right">
-                <img src="../assets/img/set_icon.png" alt="">
+                <img @click="addEvent" src="../assets/img/set_icon.png" alt="">
             </span>
         </div>
         <div>
@@ -90,15 +97,13 @@
         </div>
         <div id="holder" class="d-flex">
             我想当房东赚钱
-        </div> 
-        <bottom>></bottom>
+        </div>
+        <my-footer></my-footer> 
     </div>
 </template>
 <style>
 *{margin:0;padding:0}
-.container{
-    /* background-color:#e9e9e9; */
-}
+
 a{
     color:#999; 
 }
@@ -170,13 +175,16 @@ a{
 }
 </style>
 <script>
-import Bottom from '../components/Footer'
 export default {
     data(){
         return{
 
         }
     },
-    components:{Bottom}
+    methods:{
+        addEvent(){
+            this.$router.push('set')
+        }
+    }
 }
 </script>

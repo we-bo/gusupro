@@ -1,34 +1,36 @@
 <template>
     <div class="bj">
         <mt-header title="账号管理" class="head">
-        <router-link to="/" slot="left">
-            <mt-button icon="back"></mt-button>
-        </router-link>
+            <router-link to="/set" slot="left" >
+                <mt-button icon="back"></mt-button>
+            </router-link>
         </mt-header>
         <br>
         <mt-button type="primary" size="large" class="header">个人资料<span>></span></mt-button>
         <mt-button type="primary" size="large" class="header">用户名<span>></span></mt-button>
         <div>
-        <div class="inc">
-           <p>账号绑定</p> 
-        </div>
-        <mt-button type="primary" size="large" class="header">手机<span>></span></mt-button>
-        <mt-button type="primary" size="large" class="header">邮箱<span>></span></mt-button>
+            <div class="inc">
+                <p>账号绑定</p> 
+            </div>
+            <mt-button type="primary" size="large" class="header">手机<span>></span></mt-button>
+            <mt-button type="primary" size="large" class="header">邮箱<span>></span></mt-button>
         </div>
         <div>
-        <div class="inc">
-            <p>安全设置</p> 
+            <div class="inc">
+                <p>安全设置</p> 
+            </div>
+            <mt-button type="primary" size="large" class="header">登录密码<span>></span></mt-button>
         </div>
-        <mt-button type="primary" size="large" class="header">登录密码<span>></span></mt-button>
+        <div>
+            <div class="inc">
+                <p>权限设置</p>
+            </div>
+            <mt-button type="primary" size="large" class="header">消息通知设置<span>></span></mt-button>
         </div>
-        <di>
-        <div class="inc">
-            <p>权限设置</p>
-        </div>
-        <mt-button type="primary" size="large" class="header">消息通知设置<span>></span></mt-button>
-        </di>
         <br>
-        <mt-button type="primary" size="large" class="button">注册账号</mt-button>
+        <router-link to="/register">
+            <mt-button type="primary" size="large" class="button">注册账号</mt-button>
+        </router-link>
     </div>   
 </template>
 <style>
@@ -68,3 +70,15 @@
     color: black !important;
 }
 </style>
+<script>
+export default {
+    data(){
+        return{
+           
+        }
+    },
+    mounted(){
+        
+    }
+}
+</script>

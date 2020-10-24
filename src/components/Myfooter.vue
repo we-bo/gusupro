@@ -34,24 +34,51 @@
 export default {
     data(){
         return{
-            tabbar:'index',
+            tabbar:'index'
+        }
+    },
+    mounted(){
+        //this.$router=this.tabbar;
+        //console.log(this.$route.path)
+        if(this.$route.path=="/collect"){
+            this.tabbar="collect";
+        }else if(this.$route.path=="/message"){
+             this.tabbar="message";
+        }else if(this.$route.path=="/me"){
+             this.tabbar="me";
+        }else{
+              this.tabbar="index";
         }
     },
     watch:{
         tabbar(value){
+            // let max= window.loaction.href.split('/')[1];
+            //console.log(value)
+            //console.log(this.tabbar)
             if(value=='index'){
                 this.$router.push('/');
             }
             if(value=='collect'){
-                this.$router.push('collect');
+                this.tabbar=value;
+                this.$router.push('/collect');
             }
             if(value=='message'){
-                this.$router.push('message');
+                this.tabbar=value;
+                this.$router.push('/message');
             }
             if(value=='me'){
-                this.$router.push('me');
+                this.tabbar=value;
+                this.$router.push('/me');
             }
-        }
+        },
+        '$route': {
+		deep: true,
+		handler(to,from) {
+			if(to.path != from.path){
+				this.$router.push(to.path);
+			}
+		}
+	}
     }
 }
 </script>

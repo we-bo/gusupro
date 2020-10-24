@@ -1,8 +1,8 @@
 <template>
 <div>
     <div class="image">
-        <span ><img src="../assets/login_register/xhao.png"></span>
-        <span class="register">注册预定返积分</span>
+        <span @click="pathSpan"><img src="../assets/login_register/xhao.png"></span>
+        <span class="register" @click="image_span">注册预定返积分</span>
     </div>
     <h1 class="h1">登录古宿</h1>
     <mt-field type="text"
@@ -14,7 +14,7 @@
      @blur.native.capture="checkUsername"
     ></mt-field>
     <hr class="password">
-    <mt-field type="text"
+    <mt-field type="password"
      label="密码"
      placeholder="请输入密码"
      :attr="{maxlength:15}"
@@ -117,6 +117,12 @@ export default {
         }
     },
     methods:{
+        image_span(){
+            this.$router.push('register');
+        },
+        pathSpan(){
+            this.$router.push('/');
+        },
         checkUsername(){
             let usernameRegExp=/^[0-9a-zA-Z_]{6,20}$/;
             if(usernameRegExp.test(this.username)){
@@ -148,18 +154,21 @@ export default {
             }
         },
         handle(){
-            if(this.checkUsername() && this.checkPassword() && this.validate){
+            if(this.checkUsername() && this.checkPassword() && this.validate()){
                 let obj={
                     username:this.username,
                     password:this.password
                 }
-                this.axios.post('/login',this.qs.stringify(obj)).then(res=>{
-                    if(res.data.code==1){
-                      this.$router.push('/');  
-                    }else{
-                        this.$messagebox("登录提示","用户名活密码错误")
-                    }
-                })
+                //分发Actions
+                 this.$store.dispatch('login',obj)
+                // this.axios.post('/login',this.qs.stringify(obj)).then(res=>{
+                //     if(res.data.code==1){
+                //          this.$store.commit('logined')
+                //       this.$router.push('/');  
+                //     }else{
+                //         this.$messagebox("登录提示","用户名活密码错误")
+                //     }
+                // })
             }
         },
 
