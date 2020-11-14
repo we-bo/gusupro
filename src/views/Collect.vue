@@ -8,18 +8,35 @@
   <ul class="ul_double">
       <li class="li_double" :class="cros == index ? 'sublist': '' " v-for="(item,index) of listes" :key="index" @click="clock(index)">{{item.subject}}</li>
   </ul>
-  <div>
-    <img class="img" src="../assets/gs_icon1.png" alt="">
+
+  <div >
+    <div v-if="this.$store.state.temp.length" class="store" >
+      <div v-for="(item,index) of this.$store.state.temp" :key="index" class="state">
+        <div class="images">
+          <img :src="item.images" alt="" >
+        </div>
+        <p class="div_p">{{item.title}}</p>
+        <button class="button" @click="del(index)">取消收藏</button>
+      </div>
+
+
+    </div>
+    
+  <div v-else>
+    <div>
+      <img class="img" src="../assets/gs_icon1.png" alt="">
+    </div>
+    <div id="slot">
+      <h4>暂无收藏</h4>
+      <p>点击
+        <img class="imgs" src="../assets/shoucang1.png" alt="">
+        即可收藏对应的房屋
+      </p>
+    </div>
+    <div class="btn">
+      <button>随便逛逛</button>
+    </div>
   </div>
-  <div id="slot">
-    <h4>暂无收藏</h4>
-    <p>点击
-      <img class="imgs" src="../assets/shoucang1.png" alt="">
-      即可收藏对应的房屋
-    </p>
-  </div>
-  <div class="btn">
-    <button>随便逛逛</button>
   </div>
   <my-footer></my-footer>
 </div>
@@ -37,7 +54,8 @@ export default {
         { subject: "房东" },
         { subject: "榜单" },
         { subject: "发现" }
-      ]
+      ],
+      // array:this.$store.state.temp
     };
   },
   methods: {
@@ -46,8 +64,14 @@ export default {
     },
     clock(index) {
       this.cros = index;
+    },
+    del(index){
+      this.$store.commit('del',index)
     }
   },
+  mounted(){
+    console.log(this.$store.state.temp);
+  }
   
 };
 </script>
@@ -55,6 +79,23 @@ export default {
 <style scoped>
 *{
   padding: 0;
+}
+.div_p{
+  margin: 0px;
+}
+.store{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.store .button{
+  border: 0;
+  outline: none;
+  background-color: #fff;
+  margin-top: -4px;
+}
+.state{
+  width: 50%;
 }
 .ul_first {
   width: 200px;
@@ -128,5 +169,9 @@ li {
     border: 0;
     color: #fff;
     border-radius: 20px;
+}
+
+.images img{
+  width: 80%;
 }
 </style>

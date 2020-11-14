@@ -12,7 +12,9 @@ import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css';
 //注册Vue插件
 import Myfooter from './components/Myfooter.vue'
+import Like from './components/Like.vue'
 Vue.component("my-footer",Myfooter);
+Vue.component("my-like",Like);
 
 Vue.use(MintUI)
 Vue.prototype.qs=qs;

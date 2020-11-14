@@ -6,7 +6,6 @@
                 <router-link to="login">登录</router-link>
             </div>
             <div class="h6 float-left mb-0" v-else>
-                <router-link to="/">注销</router-link>
                 {{this.$store.state.username}}
             </div>
             <span class="float-right">
@@ -25,7 +24,7 @@
         <div>
             <div id="order" class="fle d-flex mt-4 "> 
                 <ul class="list-unstyled d-flex justify-content-around fle mb-0 ">
-                  <li><img class="rounded-circle" src="../assets/img/202002021.jpg"></li>
+                  <li> {{this.$store.state.avatar}}</li>
                   <li>
                     <p>红包</p>
                     <p>0个</p>
@@ -102,89 +101,92 @@
     </div>
 </template>
 <style>
-*{margin:0;padding:0}
+* {
+  margin: 0;
+  padding: 0;
+}
 
-a{
-    color:#999; 
+a {
+  color: #999;
 }
-.breadcrumb-item + .breadcrumb-item::before{
-    content:">"; 
-} 
-.breadcrumb,.breadcrumb-item{ 
-    font-size:10px;
-    color:#999;
-    margin:0;
-    padding:0;
+.breadcrumb-item + .breadcrumb-item::before {
+  content: ">";
 }
-.cb1{ 
-    margin-top:28px;
+.breadcrumb,
+.breadcrumb-item {
+  font-size: 10px;
+  color: #999;
+  margin: 0;
+  padding: 0;
 }
-.cb2{
-    width:30px;height:30px;
-    background-color: gray;
-    margin-left: 260px;
+.cb1 {
+  margin-top: 28px;
 }
-#df1{
-    margin-left:7px;
-    z-index: 2;
+.cb2 {
+  width: 30px;
+  height: 30px;
+  background-color: gray;
+  margin-left: 260px;
 }
-.fle>li{
-    font-size: 12px; 
-    color:lightslategray; 
-    display: block ;
-    margin-right:46px
+#df1 {
+  margin-left: 7px;
+  z-index: 2;
 }
-.fle>li:first-child{
-    margin-top:-8px
+.fle > li {
+  font-size: 12px;
+  color: lightslategray;
+  display: block;
+  margin-right: 46px;
 }
-.fle>li>p{
-    text-align: center;margin-bottom: 0;
+.fle > li:first-child {
+  margin-top: -8px;
 }
-.cb3{
-    font-size:14px;
+.fle > li > p {
+  text-align: center;
+  margin-bottom: 0;
 }
-.cb4{
-    font-size:12px;
+.cb3 {
+  font-size: 14px;
 }
-.ul{
-    color:#666;
-    font-size: 12px;
-    text-align: center;
-    list-style: none;
-    display: flex; 
-    justify-content: space-around; 
-    align-items: center;     
+.cb4 {
+  font-size: 12px;
 }
-.ul>li{
-    width:33%
+.ul {
+  color: #666;
+  font-size: 12px;
+  text-align: center;
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
-#holder{
-    width:150px;
-    height: 30px;
-    font-size:14px;
-    border-radius: 15px;
-    background:lightgray;
-    line-height: 30px;
-    justify-content:center;
-    margin:auto;
-    
+.ul > li {
+  width: 33%;
 }
-.img{
-    width:100%;
-    border-radius:8px
+#holder {
+  width: 150px;
+  height: 30px;
+  font-size: 14px;
+  border-radius: 15px;
+  background: lightgray;
+  line-height: 30px;
+  justify-content: center;
+  margin: auto;
+}
+.img {
+  width: 100%;
+  border-radius: 8px;
 }
 </style>
 <script>
 export default {
-    data(){
-        return{
-
-        }
-    },
-    methods:{
-        addEvent(){
-            this.$router.push('set')
-        }
+  data() {
+    return {};
+  },
+  methods: {
+    addEvent() {
+      this.$router.push("set");
     }
-}
+  }
+};
 </script>

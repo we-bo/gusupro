@@ -11,6 +11,11 @@
             </span>
             <span class="span_info">{{info.nickname}}</span>
         </div>
+        <div class="sort">
+            <router-link to="javascript:;">聊天</router-link>
+            <p>¥2400</p>
+            <button>立即预约</button>
+        </div>
     </div>
 </template>
 <style>
@@ -40,6 +45,15 @@
     display: block;
     width: 50px;
 
+}
+.sort{
+    width: 100%;
+    background-color: blueviolet;
+    position: fixed;
+    bottom: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 </style>
 

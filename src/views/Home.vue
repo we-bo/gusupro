@@ -22,7 +22,7 @@
 
     <!-- 顶部选项卡 -->
     <div>
-      <mt-navbar v-model="active">
+      <mt-navbar v-model="active"  class="navbar">
         <mt-tab-item  v-for="(item,index) of classify" :key="index" :id="item.id.toString()">
           {{item.category}}
         </mt-tab-item>
@@ -36,21 +36,48 @@
     infinite-scroll-disabled="busy"
     infinite-scroll-immediate-check="true"
     >
+  
         <mt-tab-container v-model="active" class="nav_container">
-          <mt-tab-container-item :id="active.toString()" class="nav_tab">
-            <router-link :to="`/article/${item.id}`" v-for="(item,index) of lists" :key="index" class="nav_a">
-            <img class="nav_img" v-lazy="item.images" alt="">
-            <p>{{item.title}}</p>
-            </router-link>
+          <mt-tab-container-item :id="active.toString()" class="nav_tab" >
+            <div v-for="(item,index) of lists" :key="index"  class="nav_div">
+              <router-link  :to="`/article/${item.id}`" class="nav_a" >
+              <img class="nav_img" v-lazy="item.images" alt="">
+              <img class="nav_img_double" src="../assets/zuobiao.png" alt="">
+              <span class="nav_span">郑州</span>
+              <p>{{item.title}}</p>
+              </router-link>
+              <my-like></my-like>
+              <button class="button" @click="add(item)">收藏</button>
+            </div>
           </mt-tab-container-item>
         </mt-tab-container>
       </div>
-      
+
     <!-- 底部选项卡开始 -->
     <my-footer></my-footer>
   </div>
 </template>
 <style spoced>
+button:focus{
+  outline: none;
+  border: 0px;
+}
+.button{
+  margin-top: -14px;
+  border: 0px;
+  outline: none;
+}
+.nav_span{
+  margin-top: -16px;
+  margin-left: -100px;
+  color: #8a8a8a;
+  font-size: 8px;
+}
+.nav_img_double{
+  width: 15px;
+  height: 15px;
+  margin-top: 8px;
+}
 .div_first{
   display: flex;
   margin-left: 18px; 
@@ -85,6 +112,7 @@
 .div_nav{
   background-color: #f5f5f5;
   margin-top: 5px;
+  margin-bottom: 55px;
 }
 .nav_img{
   width: 100%;
@@ -94,13 +122,24 @@
   display: flex;
   flex-wrap: wrap;
 }
+.nav_div{
+   float: left;
+  width: 158px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-left: 18px;
+  background-color: #fff;
+  margin-bottom: 15px;
+}
 .nav_a{
   float: left;
   width: 158px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  margin-left: 18px;
+  /* background-color: #fff; */
+  margin-bottom: 15px;
 }
 .nav_a>p{
   width: 158px;
@@ -109,6 +148,11 @@
 }
 .nav_a>img{
   border-radius: 3px;
+}
+.navbar{
+  width: 334px;
+  margin-left: 18px;
+  padding: 0px;
 }
 </style>
 <style>
@@ -143,7 +187,10 @@ export default {
     }
   },
   methods:{
-    
+    add(item){
+      // console.log(item);
+      this.$store.commit('addMessage',item);
+    }
   },
   mounted(){
     
